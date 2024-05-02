@@ -119,11 +119,6 @@ class Repeater(Timer):
         super().run()
 
 
-
-"deferred exception handling"
-
-
-
 class Errors: # pylint: disable=R0903
 
     "Errors"

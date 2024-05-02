@@ -63,9 +63,6 @@ def sync(obj, pth=None):
     return pth
 
 
-"whitelist"
-
-
 class Whitelist(Object): # pylint: disable=R0903
 
     "Whitelist"

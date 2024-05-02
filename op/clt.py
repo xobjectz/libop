@@ -10,7 +10,7 @@ import threading
 
 from .hdl import Handler
 from .obj import Default, Object
-from .thr import later, out
+from .thr import later
 
 
 class Client(Handler):
@@ -80,10 +80,10 @@ def add(func):
     setattr(Command.cmds, func.__name__, func)
 
 
-def cmnd(txt, out):
+def cmnd(txt, outer):
     "do a command using the provided output function."
     clt = Client()
-    clt.raw = out
+    clt.raw = outer
     evn = Event()
     evn.orig = object.__repr__(clt)
     evn.txt = txt

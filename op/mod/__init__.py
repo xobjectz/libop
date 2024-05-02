@@ -19,16 +19,13 @@ def __dir__():
         'irc',
         'log',
         'mbx',
-        'mdl',
         'mod',
-        'req',
         'rss',
         'rst',
         'tdo',
         'thr',
         'tmr',
-        'udp',
-        'wsd'
+        'udp'
     )
 
 
