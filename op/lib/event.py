@@ -7,7 +7,7 @@
 import threading
 
 
-from .default import Default
+from default import Default
 
 
 class Event(Default): # pylint: disable=R0902

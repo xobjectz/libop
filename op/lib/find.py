@@ -8,10 +8,10 @@ import os
 import time
 
 
-from .default   import Default
-from .object    import fqn, search, update
-from .whitelist import long
-from .workdir   import fetch, store, strip
+from default   import Default
+from object    import fqn, search, update
+from whitelist import long
+from workdir   import fetch, store, strip
 
 
 def fns(mtc=""):

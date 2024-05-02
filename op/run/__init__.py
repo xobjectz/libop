@@ -8,11 +8,11 @@ import os
 import time
 
 
-from ..broker    import Broker
-from ..client    import spl
-from ..errors    import later
-from ..command   import scan as scancmd
-from ..whitelist import scan as scancls
+from broker    import Broker
+from client    import spl
+from errors    import later
+from command   import scan as scancmd
+from whitelist import scan as scancls
 
 
 broker  = Broker()

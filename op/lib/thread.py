@@ -10,7 +10,7 @@ import time
 import types
 
 
-from .errors import later
+from errors import later
 
 
 class Thread(threading.Thread):
