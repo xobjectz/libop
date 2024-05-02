@@ -14,9 +14,6 @@ import termios
 import time
 
 
-sys.path.insert(0, os.getcwd()) # pylint: disable=C0413
-
-
 from op.client  import Client, cmnd, parse_cmd
 from op.default import Default
 from op.errors  import debug, enable, errors
