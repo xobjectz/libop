@@ -7,7 +7,7 @@
 
 
 from . import cmd, err, flt, mod, thr
-from . import fnd, irc, log, mbx, mdl, req, rss, rst, tdo, tmr, udp, wsd
+from . import fnd, irc, log, mbx, rss, rst, tdo, tmr, udp
 
 
 def __dir__():
