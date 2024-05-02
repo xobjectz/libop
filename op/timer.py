@@ -8,7 +8,7 @@ import threading
 import time
 
 
-from thread import launch
+from op.thread import launch
 
 
 class Timer:

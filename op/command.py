@@ -7,7 +7,7 @@
 import inspect
 
 
-from object import Object
+from op.object import Object
 
 
 class Command(Object): # pylint: disable=R0903

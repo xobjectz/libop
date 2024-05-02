@@ -6,5 +6,5 @@
 
 def cmd(event):
     "list commands."
-    from command import Command # pylint: disable=C0415
+    from op.command import Command # pylint: disable=C0415
     event.reply(",".join(sorted(list(Command.cmds))))

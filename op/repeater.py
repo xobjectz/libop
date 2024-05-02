@@ -4,8 +4,8 @@
 "repeater"
 
 
-from thread import launch
-from timer  import Timer
+from op.thread import launch
+from op.timer  import Timer
 
 
 class Repeater(Timer):

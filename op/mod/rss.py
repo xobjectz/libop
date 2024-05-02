@@ -16,13 +16,13 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
 
 
-from client     import laps, spl
-from default    import Default
-from find       import find, fntime, last
-from object     import Object, fmt, update, values
-from repeater   import Repeater
-from thread     import launch
-from workdir    import sync
+from op.client     import laps, spl
+from op.default    import Default
+from op.find       import find, fntime, last
+from op.object     import Object, fmt, update, values
+from op.repeater   import Repeater
+from op.thread     import launch
+from op.workdir    import sync
 
 
 from op.run     import broker

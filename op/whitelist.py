@@ -7,8 +7,8 @@
 import inspect
 
 
-from object  import Object
-from workdir import liststore
+from op.object  import Object
+from op.workdir import liststore
 
 
 class Whitelist(Object): # pylint: disable=R0903

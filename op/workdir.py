@@ -8,7 +8,7 @@ import datetime
 import os
 
 
-from object import Object, cdir, fqn, read, write
+from op.object import Object, cdir, fqn, read, write
 
 
 class Workdir(Object): # pylint: disable=R0903

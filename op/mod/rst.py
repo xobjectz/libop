@@ -12,12 +12,12 @@ import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
-from default import Default
-from errors  import debug, later
-from find    import fns
-from object  import Object
-from thread  import launch
-from workdir import Workdir
+from op.default import Default
+from op.errors  import debug, later
+from op.find    import fns
+from op.object  import Object
+from op.thread  import launch
+from op.workdir import Workdir
 
 
 def init():

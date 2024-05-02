@@ -11,11 +11,11 @@ import os
 import time
 
 
-from object    import Object, fmt, update
-from client    import laps
-from find      import find, fntime
-from whitelist import whitelist
-from workdir   import sync
+from op.object    import Object, fmt, update
+from op.client    import laps
+from op.find      import find, fntime
+from op.whitelist import whitelist
+from op.workdir   import sync
 
 
 MONTH = {

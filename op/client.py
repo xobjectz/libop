@@ -4,11 +4,11 @@
 "client"
 
 
-from command import Command
-from default import Default
-from errors  import later
-from event   import Event
-from handler import Handler
+from op.command import Command
+from op.default import Default
+from op.errors  import later
+from op.event   import Event
+from op.handler import Handler
 
 
 class Client(Handler):
