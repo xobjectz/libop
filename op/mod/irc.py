@@ -18,11 +18,10 @@ import _thread
 from op.client    import Client, command
 from op.default   import Default
 from op.event     import Event
-from op.errors    import Errors, debug, later
 from op.find      import last
 from op.object    import Object, edit, fmt, keys, values
-from op.run    import broker
-from op.thread    import launch
+from op.run       import broker
+from op.thread    import Errors, debug, later, launch
 from op.whitelist import whitelist
 from op.workdir   import sync
 

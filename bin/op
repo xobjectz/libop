@@ -16,10 +16,10 @@ import time
 
 from op.client  import Client, cmnd, parse_cmd
 from op.default import Default
-from op.errors  import debug, enable, errors
 from op.event   import Event
 from op.object  import cdir
 from op.run  import broker, dte, init, scan
+from op.thread  import debug, enable, errors
 from op.workdir import Workdir, skel
 
 

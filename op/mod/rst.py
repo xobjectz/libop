@@ -13,10 +13,9 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
 from op.default import Default
-from op.errors  import debug, later
 from op.find    import fns
 from op.object  import Object
-from op.thread  import launch
+from op.thread  import debug, later, launch
 from op.workdir import Workdir
 
 

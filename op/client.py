@@ -6,9 +6,9 @@
 
 from op.command import Command
 from op.default import Default
-from op.errors  import later
 from op.event   import Event
 from op.handler import Handler
+from op.thread  import later
 
 
 class Client(Handler):

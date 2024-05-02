@@ -10,14 +10,13 @@ import time
 
 from op.broker    import Broker
 from op.client    import spl
-from op.errors    import later
 from op.command   import scan as scancmd
+from op.thread    import later
 from op.whitelist import scan as scancls
 
 
 broker  = Broker()
 dte     = time.ctime(time.time()).replace("  ", " ")
-path    = os.path.join(os.path.dirname(__file__), "modules")
 
 
 def modlist(pth):
