@@ -7,10 +7,10 @@
 import time
 
 
-from op.client    import laps
-from op.object    import Object
-from op.find      import fntime, find
-from op.workdir   import sync
+from clt import laps
+from dsk import sync
+from fnd import fntime, find
+from obj import Object
 
 
 class NoDate(Exception): # pylint: disable=R0903

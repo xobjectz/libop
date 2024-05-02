@@ -8,10 +8,8 @@ import os
 import time
 
 
-from op.default   import Default
-from op.object    import fqn, search, update
-from op.whitelist import long
-from op.workdir   import fetch, store, strip
+from dsk import fetch, long, store, strip
+from obj import Default, fqn, search, update
 
 
 def fns(mtc=""):

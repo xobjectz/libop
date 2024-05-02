@@ -9,14 +9,12 @@ import re
 import time as ttime
 
 
-from op.client    import laps
-from op.event     import Event
-from op.find      import find
-from op.object    import update
-from op.run       import broker
-from op.thread    import launch
-from op.timer     import Timer
-from op.workdir   import sync
+from clt import Event, laps
+from dsk import sync
+from fnd import find
+from obj import update
+from run import broker
+from thr import Timer, launch
 
 
 def init():

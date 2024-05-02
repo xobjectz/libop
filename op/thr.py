@@ -74,6 +74,52 @@ def name(obj):
     return None
 
 
+class Timer:
+
+    "Timer"
+
+    def __init__(self, sleep, func, *args, thrname=None):
+        self.args  = args
+        self.func  = func
+        self.sleep = sleep
+        self.name  = thrname or str(self.func).split()[2]
+        self.state = {}
+        self.timer = None
+
+    def run(self):
+        "run the payload in a thread."
+        self.state["latest"] = time.time()
+        launch(self.func, *self.args)
+
+    def start(self):
+        "start timer."
+        timer = threading.Timer(self.sleep, self.run)
+        timer.name   = self.name
+        timer.daemon = True
+        timer.sleep  = self.sleep
+        timer.state  = self.state
+        timer.func   = self.func
+        timer.state["starttime"] = time.time()
+        timer.state["latest"]    = time.time()
+        timer.start()
+        self.timer   = timer
+
+    def stop(self):
+        "stop timer."
+        if self.timer:
+            self.timer.cancel()
+
+
+class Repeater(Timer):
+
+    "Repeater"
+
+    def run(self):
+        launch(self.start)
+        super().run()
+
+
+
 "deferred exception handling"
 
 
@@ -139,7 +185,9 @@ def tostr(exc):
 def __dir__():
     return (
         'Errors',
+        'Repeater',
         'Thread',
+        'Timer',
         'debug',
         'enable',
         'errors',

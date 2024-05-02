@@ -14,13 +14,11 @@ import termios
 import time
 
 
-from op.client  import Client, cmnd, parse_cmd
-from op.default import Default
-from op.event   import Event
-from op.object  import cdir
-from op.run  import broker, dte, init, scan
-from op.thread  import debug, enable, errors
-from op.workdir import Workdir, skel
+from op.clt import Client, Command, Event, cmnd, parse_cmd
+from op.dsk import Workdir, skel
+from op.obj import Default, cdir
+from op.run import broker, dte, init, scan
+from op.thr import debug, enable, errors, out
 
 
 from op import mod
@@ -148,6 +146,7 @@ def main():
         while 1:
             time.sleep(1.0)
     elif Cfg.otxt:
+        print(broker.objs)
         cmnd(Cfg.otxt, print)
 
 

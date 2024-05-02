@@ -30,6 +30,15 @@ class Object: # pylint: disable=R0902
         return str(self.__dict__)
 
 
+class Default(Object): # pylint: disable=R0902,R0903
+
+    "Default"
+
+    def __getattr__(self, key):
+        return self.__dict__.get(key, "")
+
+
+
 def construct(obj, *args, **kwargs):
     "construct an object from provided arguments."
     if args:
@@ -253,6 +262,7 @@ def cdir(pth):
 def __dir__():
     return (
         'Object',
+        'Default',
         'construct',
         'dump',
         'dumps',

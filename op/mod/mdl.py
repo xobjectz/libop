@@ -8,14 +8,10 @@ import datetime
 import time
 
 
-from op.client   import laps
-from op.event    import Event
-from op.object   import Object, construct, keys, values
-from op.repeater import Repeater
-from op.thread   import launch
-
-
-from op.run   import broker
+from clt import Event, laps
+from obj import Object, construct, keys, values
+from run import broker
+from thr import Repeater, launch
 
 
 DAY = 24*60*60

@@ -16,16 +16,12 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
 
 
-from op.client     import laps, spl
-from op.default    import Default
-from op.find       import find, fntime, last
-from op.object     import Object, fmt, update, values
-from op.repeater   import Repeater
-from op.thread     import launch
-from op.workdir    import sync
-
-
-from op.run     import broker
+from clt import laps, spl
+from dsk import sync
+from fnd import find, fntime, last
+from obj import Default, Object, fmt, update, values
+from run import broker
+from thr import Repeater, launch
 
 
 def init():

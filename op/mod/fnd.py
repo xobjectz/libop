@@ -4,10 +4,9 @@
 "locate"
 
 
-from op.find      import find
-from op.object    import fmt
-from op.whitelist import long
-from op.workdir   import liststore, skel
+from fnd import find
+from obj import fmt
+from dsk import liststore, long, skel
 
 
 def fnd(event):

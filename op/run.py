@@ -8,11 +8,13 @@ import os
 import time
 
 
-from op.broker    import Broker
-from op.client    import spl
-from op.command   import scan as scancmd
-from op.thread    import later
-from op.whitelist import scan as scancls
+from brk import Broker
+from clt import spl
+from thr import later
+
+
+from op.clt import scan as scancmd
+from op.dsk import scan as scancls
 
 
 broker  = Broker()

@@ -4,11 +4,13 @@
 "client"
 
 
-from op.command import Command
-from op.default import Default
-from op.event   import Event
-from op.handler import Handler
-from op.thread  import later
+import inspect
+import threading
+
+
+from hdl import Handler
+from obj import Default, Object
+from thr import later, out
 
 
 class Client(Handler):
@@ -34,6 +36,48 @@ class Client(Handler):
         "show results into a channel."
         for txt in evt.result:
             self.say(evt.channel, txt)
+
+
+class Command(Object): # pylint: disable=R0903
+
+    "Command"
+
+    cmds = Object()
+
+
+class Event(Default): # pylint: disable=R0902
+
+    "Event"
+
+    def __init__(self):
+        Default.__init__(self)
+        self._thr    = None
+        self._ready  = threading.Event()
+        self.done    = False
+        self.orig    = None
+        self.result  = []
+        self.txt     = ""
+        self.type    = "event"
+
+    def ready(self):
+        "event is ready."
+        self._ready.set()
+
+    def reply(self, txt):
+        "add text to the result"
+        self.result.append(txt)
+
+    def wait(self):
+        "wait for event to be ready."
+        if self._thr:
+            self._thr.join()
+        self._ready.wait()
+        return self.result
+
+
+def add(func):
+    "add command."
+    setattr(Command.cmds, func.__name__, func)
 
 
 def cmnd(txt, out):
@@ -155,6 +199,15 @@ def parse_cmd(obj, txt=None):
         obj.txt = obj.cmd or ""
 
 
+def scan(mod) -> None:
+    "scan module for commands."
+    for key, cmd in inspect.getmembers(mod, inspect.isfunction):
+        if key.startswith("cb"):
+            continue
+        if 'event' in cmd.__code__.co_varnames:
+            add(cmd)
+
+
 def spl(txt):
     "split comma separated string into a list."
     try:
@@ -167,9 +220,13 @@ def spl(txt):
 def __dir__():
     return (
         'Client',
+        'Commands',
+        'Event',
+        'add',
         'cmnd',
         'command',
         'lapse',
         'parse_cmd',
+        'scan',
         'spl'
     )
