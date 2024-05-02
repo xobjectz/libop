@@ -146,7 +146,6 @@ def main():
         while 1:
             time.sleep(1.0)
     elif Cfg.otxt:
-        print(broker.objs)
         cmnd(Cfg.otxt, print)
 
 
