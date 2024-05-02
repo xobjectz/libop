@@ -9,7 +9,7 @@ import inspect
 import os
 
 
-from .obj import Object, cdir, fqn, read, write
+from .object import Object, cdir, fqn, read, write
 
 
 class Workdir(Object): # pylint: disable=R0903

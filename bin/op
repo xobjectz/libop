@@ -14,14 +14,14 @@ import termios
 import time
 
 
-from op.clt import Client, Event, cmnd, parse_cmd
-from op.dsk import Workdir, skel
-from op.obj import Default, cdir
-from op.run import broker, dte, init, scan
-from op.thr import debug, enable, errors
+from op.client import Client, Event, cmnd, parse_cmd
+from op.disk   import Workdir, skel
+from op.object import Default, cdir
+from op.run    import broker, dte, init, scan
+from op.thread import debug, enable, errors
 
 
-from op import mod
+from op import modules
 
 
 Cfg             = Default()
@@ -124,23 +124,23 @@ def main():
     if Cfg.sets.dis:
         Cfg.dis += "," + Cfg.sets.dis
     if "a" in Cfg.opts:
-        Cfg.mod = ",".join(mod.__dir__())
-    scan(mod, Cfg.mod, Cfg.dis)
+        Cfg.mod = ",".join(modules.__dir__())
+    scan(modules, Cfg.mod, Cfg.dis)
     if "v" in Cfg.opts:
         debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} started {dte}")
         debug(f"scanned {Cfg.mod}")
     if "h" in Cfg.opts:
         print(__doc__)
     elif "d" in Cfg.opts:
-        Cfg.mod  = ",".join(mod.__dir__())
+        Cfg.mod  = ",".join(modules.__dir__())
         Cfg.user = getpass.getuser()
         daemon(Cfg.pidfile, "v" in Cfg.opts)
         privileges(Cfg.user)
-        init(mod, Cfg.mod, Cfg.dis)
+        init(modules, Cfg.mod, Cfg.dis)
         while 1:
             time.sleep(1.0)
     elif "c" in Cfg.opts:
-        init(mod, Cfg.mod, Cfg.dis)
+        init(modules, Cfg.mod, Cfg.dis)
         csl = Console()
         csl.start()
         while 1:

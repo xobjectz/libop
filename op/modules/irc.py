@@ -15,12 +15,12 @@ import time
 import _thread
 
 
-from op.clt import Client, Event, command
-from op.fnd import last
-from op.obj import Default, Object, edit, fmt, keys, values
-from op.run import broker
-from op.thr import Errors, debug, later, launch
-from op.dsk import sync, whitelist
+from op.client import Client, Event, command
+from op.disk   import sync, whitelist
+from op.find   import last
+from op.object import Default, Object, edit, fmt, keys, values
+from op.run    import broker
+from op.thread import Errors, debug, later, launch
 
 
 NAME    = __file__.split(os.sep)[-3]

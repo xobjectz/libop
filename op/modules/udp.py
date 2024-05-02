@@ -11,9 +11,9 @@ import threading
 import time
 
 
-from op.obj import Object, values
-from op.run import broker
-from op.thr import launch
+from op.object import Object, values
+from op.run    import broker
+from op.thread import launch
 
 
 def init():

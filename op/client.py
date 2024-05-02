@@ -8,9 +8,9 @@ import inspect
 import threading
 
 
-from .hdl import Handler
-from .obj import Default, Object
-from .thr import later
+from .handler import Handler
+from .object  import Default, Object
+from .thread  import later
 
 
 class Client(Handler):

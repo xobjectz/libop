@@ -4,9 +4,9 @@
 "fleet"
 
 
-from op.obj import values
-from op.run import broker
-from op.thr import name
+from ..object import values
+from ..run    import broker
+from ..thread import name
 
 
 def flt(event):

@@ -8,8 +8,8 @@ import threading
 import time
 
 
-from op.clt import laps
-from op.obj import Object, update
+from op.client import laps
+from op.object import Object, update
 
 
 STARTTIME = time.time()

@@ -4,9 +4,9 @@
 "locate"
 
 
-from op.fnd import find
-from op.obj import fmt
-from op.dsk import liststore, long, skel
+from op.find import find
+from op.object import fmt
+from op.disk import liststore, long, skel
 
 
 def fnd(event):
