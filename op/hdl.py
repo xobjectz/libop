@@ -9,8 +9,8 @@ import threading
 import _thread
 
 
-from obj import Object
-from thr import launch
+from .obj import Object
+from .thr import launch
 
 
 class Handler:

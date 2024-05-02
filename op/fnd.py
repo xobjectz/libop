@@ -8,8 +8,8 @@ import os
 import time
 
 
-from dsk import fetch, long, store, strip
-from obj import Default, fqn, search, update
+from .dsk import fetch, long, store, strip
+from .obj import Default, fqn, search, update
 
 
 def fns(mtc=""):

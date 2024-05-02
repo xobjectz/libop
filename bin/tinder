@@ -18,9 +18,8 @@ import _thread
 sys.path.insert(0, os.getcwd())
 
 
-from op.clt import Client, Command, laps, parse_cmd
+from op.clt import Client, Command, Event, laps, parse_cmd
 from op.dsk import Workdir
-from op.hdl import Event
 from op.obj import Default, Object, keys
 from op.run import dte, modlist, scan
 from op.thr import errors, launch
