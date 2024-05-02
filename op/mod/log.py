@@ -7,10 +7,10 @@
 import time
 
 
-from clt import laps
-from dsk import sync
-from fnd import find, fntime
-from obj import Object
+from op.clt import laps
+from op.dsk import sync
+from op.fnd import find, fntime
+from op.obj import Object
 
 
 class Log(Object): # pylint: disable=R0903

@@ -4,7 +4,7 @@
 "deferred exception handling"
 
 
-from thr import Errors, tostr
+from op.thr import Errors, tostr
 
 
 def err(event):

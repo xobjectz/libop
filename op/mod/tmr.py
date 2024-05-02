@@ -9,12 +9,12 @@ import re
 import time as ttime
 
 
-from clt import Event, laps
-from dsk import sync
-from fnd import find
-from obj import update
-from run import broker
-from thr import Timer, launch
+from op.clt import Event, laps
+from op.dsk import sync
+from op.fnd import find
+from op.obj import update
+from op.run import broker
+from op.thr import Timer, launch
 
 
 def init():

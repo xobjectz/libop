@@ -11,10 +11,10 @@ import os
 import time
 
 
-from obj import Object, fmt, update
-from clt import laps
-from fnd import find, fntime
-from dsk import sync, whitelist
+from op.obj import Object, fmt, update
+from op.clt import laps
+from op.fnd import find, fntime
+from op.dsk import sync, whitelist
 
 
 MONTH = {

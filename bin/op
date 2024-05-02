@@ -14,11 +14,11 @@ import termios
 import time
 
 
-from op.clt import Client, Command, Event, cmnd, parse_cmd
+from op.clt import Client, Event, cmnd, parse_cmd
 from op.dsk import Workdir, skel
 from op.obj import Default, cdir
 from op.run import broker, dte, init, scan
-from op.thr import debug, enable, errors, out
+from op.thr import debug, enable, errors
 
 
 from op import mod

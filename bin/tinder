@@ -18,13 +18,12 @@ import _thread
 sys.path.insert(0, os.getcwd())
 
 
-from op.client  import Client, Command, laps, parse_cmd
-from op.default import Default
-from op.disk    import Workdir
-from op.event   import Event
-from op.object  import Object, keys
-from op.run     import dte, modlist, scan
-from op.thread  import errors, launch
+from op.clt import Client, Command, laps, parse_cmd
+from op.dsk import Workdir
+from op.hdl import Event
+from op.obj import Default, Object, keys
+from op.run import dte, modlist, scan
+from op.thr import errors, launch
 
 
 from op import mod
