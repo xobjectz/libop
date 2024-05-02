@@ -8,9 +8,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "libop"
 description = "original programmer"
-version = "1"
+version = "30"
 authors = [
-    {name = "xobjectz",email = "objx@proton.me"},
+    {name = "Bart Thate",email = "bthate@dds.nl"},
 ]
 readme = "README.rst"
 license = {text="Public Domain"}
