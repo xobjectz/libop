@@ -1,7 +1,5 @@
-grep -R importlib botl bin/botl
-grep -R __import__ botl bin/botl
-grep -R "print(" botl
-grep -R popen botl bin/botl
-grep -R botl botl 
-grep -R BOTL botl 
-grep -R "import sys" botl
+grep -R importlib op bin/op
+grep -R __import__ op
+grep -R "print(" op
+grep -R popen op
+grep -R "import sys" op

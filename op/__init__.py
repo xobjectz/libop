@@ -9,3 +9,19 @@ import sys
 
 
 sys.path.insert(0, os.path.dirname(__file__))
+
+
+from . import brk, clt, dsk, fnd, hdl, obj, run, thr
+
+
+def __dir__():
+    return (
+        'brk',
+        'clt',
+        'dsk',
+        'fnd',
+        'hdl',
+        'obj',
+        'thr'
+    )
+    
