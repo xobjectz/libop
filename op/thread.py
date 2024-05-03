@@ -12,6 +12,13 @@ import traceback
 import types
 
 
+class Errors: # pylint: disable=R0903
+
+    "Errors"
+
+    errors = []
+
+
 class Thread(threading.Thread):
 
     "Thread"
@@ -45,33 +52,6 @@ class Thread(threading.Thread):
             later(ex)
             if args and "Event" in str(type(args[0])):
                 args[0].ready()
-
-
-def launch(func, *args, **kwargs):
-    "launch a thread."
-    nme = kwargs.get("name", name(func))
-    thread = Thread(func, nme, *args, **kwargs)
-    thread.start()
-    return thread
-
-
-def name(obj):
-    "return a full qualified name of an object/function/module."
-    # pylint: disable=R0911
-    typ = type(obj)
-    if isinstance(typ, types.ModuleType):
-        return obj.__name__
-    if isinstance(typ, types.FunctionType):
-        return obj.__name__
-    if '__self__' in dir(obj):
-        return f'{obj.__self__.__class__.__name__}.{obj.__name__}'
-    if '__class__' in dir(obj) and '__name__' in dir(obj):
-        return f'{obj.__class__.__name__}.{obj.__name__}'
-    if '__class__' in dir(obj):
-        return f"{obj.__class__.__module__}.{obj.__class__.__name__}"
-    if '__name__' in dir(obj):
-        return f'{obj.__class__.__name__}.{obj.__name__}'
-    return None
 
 
 class Timer:
@@ -119,23 +99,37 @@ class Repeater(Timer):
         super().run()
 
 
-class Errors: # pylint: disable=R0903
-
-    "Errors"
-
-    errors = []
-
-
-def errors():
-    "show exceptions"
-    for exc in Errors.errors:
-        out(exc)
-
-
 def later(exc):
     "add an exception"
     excp = exc.with_traceback(exc.__traceback__)
     Errors.errors.append(excp)
+
+
+def launch(func, *args, **kwargs):
+    "launch a thread."
+    nme = kwargs.get("name", name(func))
+    thread = Thread(func, nme, *args, **kwargs)
+    thread.start()
+    return thread
+
+
+def name(obj):
+    "return a full qualified name of an object/function/module."
+    # pylint: disable=R0911
+    typ = type(obj)
+    if isinstance(typ, types.ModuleType):
+        return obj.__name__
+    if isinstance(typ, types.FunctionType):
+        return obj.__name__
+    if '__self__' in dir(obj):
+        return f'{obj.__self__.__class__.__name__}.{obj.__name__}'
+    if '__class__' in dir(obj) and '__name__' in dir(obj):
+        return f'{obj.__class__.__name__}.{obj.__name__}'
+    if '__class__' in dir(obj):
+        return f"{obj.__class__.__module__}.{obj.__class__.__name__}"
+    if '__name__' in dir(obj):
+        return f'{obj.__class__.__name__}.{obj.__name__}'
+    return None
 
 
 def tostr(exc):
@@ -151,6 +145,9 @@ def tostr(exc):
     for line in stream.readlines():
         res += line + "\n"
     return res
+
+
+"interface"
 
 
 def __dir__():
