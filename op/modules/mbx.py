@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=C,R
+# pylint: disable=W0105
 
 
 "mailbox"
@@ -11,10 +11,9 @@ import os
 import time
 
 
-from op.client import laps
-from op.disk import sync, whitelist
-from op.find import find, fntime
-from op.object import Object, fmt, update
+from ..client import laps
+from ..disk   import find, fntime, sync, whitelist
+from ..object import Object, fmt, update
 
 
 MONTH = {

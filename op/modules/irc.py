@@ -17,8 +17,7 @@ import _thread
 
 from op.client  import Client, Event, command
 from op.debug   import Debug, debug
-from op.disk    import sync, whitelist
-from op.find    import last
+from op.disk    import last, sync, whitelist
 from op.object  import Default, Object, edit, fmt, keys, values
 from op.runtime import broker
 from op.thread  import later, launch

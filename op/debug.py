@@ -39,7 +39,8 @@ def errors():
 def out(exc):
     "check if output function is set."
     txt = str(tostr(exc))
-    Debug.out(txt)
+    if Debug.out:
+        Debug.out(txt)
 
 
 "interface"
