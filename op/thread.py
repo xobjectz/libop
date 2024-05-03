@@ -64,7 +64,7 @@ class Timer:
         self.args  = args
         self.func  = func
         self.sleep = sleep
-        self.name  = thrname or str(self.func).split()[2]
+        self.name  = thrname or name(func)
         self.state = {}
         self.timer = None
 
@@ -123,7 +123,7 @@ def name(obj):
     typ = type(obj)
     if isinstance(typ, types.ModuleType):
         return obj.__name__
-    if isinstance(typ, types.FunctionType):
+    if '__builtins__' in dir(typ):
         return obj.__name__
     if '__self__' in dir(obj):
         return f'{obj.__self__.__class__.__name__}.{obj.__name__}'
@@ -162,6 +162,6 @@ def __dir__():
         'Timer',
         'later',
         'launch',
-        'name'
-        'tostr',
+        'name',
+        'tostr'
     )
