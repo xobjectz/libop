@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=W0105
+# pylint: disable=R0903,R0911,W0105,W0718
 
 
 "threads with deferred exception handling"
@@ -14,7 +14,7 @@ import traceback
 import types
 
 
-class Errors: # pylint: disable=R0903
+class Errors:
 
     "Errors"
 
@@ -50,7 +50,7 @@ class Thread(threading.Thread):
         func, args = self.queue.get()
         try:
             self._result = func(*args)
-        except Exception as ex: # pylint: disable=W0718
+        except Exception as ex:
             later(ex)
             if args and "Event" in str(type(args[0])):
                 args[0].ready()
@@ -120,7 +120,6 @@ def launch(func, *args, **kwargs):
 
 def name(obj):
     "return a full qualified name of an object/function/module."
-    # pylint: disable=R0911
     typ = type(obj)
     if isinstance(typ, types.ModuleType):
         return obj.__name__
@@ -161,12 +160,8 @@ def __dir__():
         'Repeater',
         'Thread',
         'Timer',
-        'debug',
-        'enable',
-        'errors',
         'later',
         'launch',
         'name'
         'tostr',
-        'out'
     )

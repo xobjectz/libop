@@ -3,7 +3,7 @@
 # pylint: disable=R0903,W0105,E1102
 
 
-"debug"
+"utilities"
 
 
 from .thread import Errors, tostr
@@ -50,5 +50,6 @@ def __dir__():
     return (
         'debug',
         'enable',
+        'errors',
         'out'
     )
