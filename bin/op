@@ -20,6 +20,7 @@ from op.object  import Default, cdir
 from op.runtime import broker, dte
 from op.utility import debug, enable, errors
 
+
 from op import modules
 
 
@@ -28,7 +29,7 @@ Cfg.dis         = ""
 Cfg.mod         = "cmd,mod"
 Cfg.opts        = ""
 Cfg.name        = __file__.rsplit(os.sep, maxsplit=1)[-1]
-Cfg.version     = "1"
+Cfg.version     = "31"
 Cfg.wdr         = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile     = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
@@ -117,15 +118,12 @@ def wrap(func):
 
 def main():
     "main"
-    enable(print)
-    skel()
     parse_cmd(Cfg, " ".join(sys.argv[1:]))
-    if Cfg.sets.dis:
-        Cfg.dis += "," + Cfg.sets.dis
+    skel()
     if "a" in Cfg.opts:
         Cfg.mod = ",".join(modules.__dir__())
-    scan(modules, Cfg.mod, Cfg.dis)
     if "v" in Cfg.opts:
+        enable(print)
         debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} started {dte}")
         debug(f"scanned {Cfg.mod}")
     if "h" in Cfg.opts:
@@ -134,17 +132,20 @@ def main():
         Cfg.mod  = ",".join(modules.__dir__())
         Cfg.user = getpass.getuser()
         daemon(Cfg.pidfile, "v" in Cfg.opts)
+        scan(modules, Cfg.mod)
         privileges(Cfg.user)
-        init(modules, Cfg.mod, Cfg.dis)
+        init(modules, Cfg.mod)
         while 1:
             time.sleep(1.0)
     elif "c" in Cfg.opts:
-        init(modules, Cfg.mod, Cfg.dis)
+        scan(modules, Cfg.mod, Cfg.sets.dis)
+        init(modules, Cfg.mod, Cfg.sets.dis)
         csl = Console()
         csl.start()
         while 1:
             time.sleep(1.0)
     elif Cfg.otxt:
+        scan(modules, Cfg.mod, Cfg.sets.dis)
         cmnd(Cfg.otxt, print)
 
 
