@@ -101,7 +101,7 @@ def long(name):
             res = named
             break
     if "." not in res:
-        for fnm in liststore():
+        for fnm in lsstore():
             claz = fnm.split(".")[-1]
             if fnm == claz.lower():
                 res = fnm
