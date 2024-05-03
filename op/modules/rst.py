@@ -12,10 +12,11 @@ import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
+from op.debug  import debug
 from op.disk   import Workdir
 from op.find   import fns
 from op.object import Default, Object
-from op.thread import debug, later, launch
+from op.thread import later, launch
 
 
 def init():

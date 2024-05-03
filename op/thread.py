@@ -124,24 +124,6 @@ class Errors: # pylint: disable=R0903
     "Errors"
 
     errors = []
-    filter = []
-
-    @staticmethod
-    def out(txt):
-        "overload this."
-
-
-def debug(txt):
-    "print to console."
-    for skp in Errors.filter:
-        if skp in txt:
-            return
-    Errors.out(txt)
-
-
-def enable(func):
-    "set output function."
-    Errors.out = func
 
 
 def errors():
@@ -154,12 +136,6 @@ def later(exc):
     "add an exception"
     excp = exc.with_traceback(exc.__traceback__)
     Errors.errors.append(excp)
-
-
-def out(exc):
-    "check if output function is set."
-    txt = str(tostr(exc))
-    Errors.out(txt)
 
 
 def tostr(exc):
