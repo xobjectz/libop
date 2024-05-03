@@ -1,4 +1,6 @@
 # This file is placed in the Public Domain.
+#
+# pylint: disable=W0105,E0402
 
 
 "clean namespace"
@@ -165,6 +167,9 @@ def write(obj, pth):
             dump(obj, ofile, indent=4)
 
 
+"decoder"
+
+
 class ObjectDecoder(json.JSONDecoder):
 
     "ObjectDecoder"
@@ -206,6 +211,9 @@ def loads(string, *args, **kw):
     kw["cls"] = ObjectDecoder
     kw["object_hook"] = hook
     return json.loads(string, *args, **kw)
+
+
+"encoder"
 
 
 class ObjectEncoder(json.JSONEncoder):
@@ -257,6 +265,9 @@ def cdir(pth):
         return
     pth = pathlib.Path(pth)
     os.makedirs(pth, exist_ok=True)
+
+
+"interface"
 
 
 def __dir__():

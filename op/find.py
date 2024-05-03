@@ -1,4 +1,6 @@
 # This file is placed in the Public Domain.
+#
+# pylint: disable=W0105,E0402
 
 
 "locate"
@@ -71,6 +73,9 @@ def last(obj, selector=None):
         update(obj, inp[-1])
         res = inp[0]
     return res
+
+
+"interface"
 
 
 def __dir__():

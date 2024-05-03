@@ -16,5 +16,5 @@ def mod(event):
             continue
         if mdd.endswith("~"):
             continue
-        mods.append(mdd)
-    event.reply(",".join(mods))
+        mods.append(mdd[:-3])
+    event.reply(",".join(sorted(mods)))

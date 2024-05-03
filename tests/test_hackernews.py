@@ -9,7 +9,7 @@
 import unittest
 
 
-from op.mod.rss import Parser
+from op.modules.rss import Parser
 
 
 class TestParse(unittest.TestCase):

@@ -1,4 +1,6 @@
 # This file is placed in the Public Domain.
+#
+# pylint: disable=W0105,E0402
 
 
 "runtime"
@@ -63,6 +65,8 @@ def doskip(name, skipp):
             return True
     return False
 
+
+"interface"
 
 
 def __dir__():

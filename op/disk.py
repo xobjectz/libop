@@ -1,4 +1,6 @@
 # This file is placed in the Public Domain.
+#
+# pylint: disable=R0903,W0105,E0402
 
 
 "workdir"
@@ -12,7 +14,7 @@ import os
 from .object import Object, cdir, fqn, read, write
 
 
-class Workdir(Object): # pylint: disable=R0903
+class Workdir(Object):
 
     "Workdir"
 
@@ -63,7 +65,7 @@ def sync(obj, pth=None):
     return pth
 
 
-class Whitelist(Object): # pylint: disable=R0903
+class Whitelist(Object):
 
     "Whitelist"
 
@@ -100,6 +102,9 @@ def long(name):
             if fnm == claz.lower():
                 res = fnm
     return res
+
+
+"interface"
 
 
 def __dir__():

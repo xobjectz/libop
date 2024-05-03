@@ -1,4 +1,6 @@
 # This file is placed in the Public Domain.
+#
+# pylint: disable=W0105,E0402
 
 
 "threads with deferred exception handling"
@@ -97,6 +99,9 @@ class Repeater(Timer):
     def run(self):
         launch(self.start)
         super().run()
+
+
+"utilities"
 
 
 def later(exc):

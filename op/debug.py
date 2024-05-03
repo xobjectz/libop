@@ -1,4 +1,6 @@
 # This file is placed in the Public Domain.
+#
+# pylint: disable=R0903,W0105,E1102,E0402
 
 
 "debug"
@@ -9,8 +11,10 @@ from .thread import Errors, tostr
 
 class Debug:
 
-     filter = []
-     out = None
+    "Debug"
+
+    filter = []
+    out = None
 
 
 def debug(txt):
@@ -36,6 +40,9 @@ def out(exc):
     "check if output function is set."
     txt = str(tostr(exc))
     Debug.out(txt)
+
+
+"interface"
 
 
 def __dir__():

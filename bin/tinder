@@ -18,14 +18,15 @@ import _thread
 sys.path.insert(0, os.getcwd())
 
 
-from op.clt import Client, Command, Event, laps, parse_cmd
-from op.dsk import Workdir
-from op.obj import Default, Object, keys
-from op.run import dte, modlist, scan
-from op.thr import errors, launch
+from op.client  import Client, Command, Event, laps, parse_cmd
+from op.debug   import errors
+from op.disk    import Workdir
+from op.object  import Default, Object, keys
+from op.runtime import dte, modlist, scan
+from op.thread  import launch
 
 
-from op import mod
+from op import modules
 
 
 LAP = 1
@@ -35,7 +36,7 @@ PERCALL = 1
 STARTTIME = time.time()
 
 
-path = os.path.dirname(mod.__file__)
+path = os.path.dirname(modules.__file__)
 
 
 Cfg             = Default()
@@ -144,7 +145,7 @@ def wrap(func):
 
 def main():
     "main"
-    scan(mod, Cfg.mod)
+    scan(modules, Cfg.mod)
     nrs = Cfg.index or 1
     nrcommand = len(Command.cmds) or 1
     thrs = []

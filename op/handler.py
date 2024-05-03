@@ -1,4 +1,6 @@
 # This file is placed in the Public Domain.
+#
+# pylint: disable=W0105,E0402
 
 
 "handler"
@@ -59,6 +61,9 @@ class Handler:
     def stop(self):
         "stop the event loop."
         self.stopped.set()
+
+
+"interface"
 
 
 def __dir__():
