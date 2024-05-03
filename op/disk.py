@@ -37,7 +37,7 @@ def ident(obj):
                        )
 
 
-def liststore():
+def lsstore():
     "return types stored."
     return os.listdir(store())
 
@@ -76,7 +76,7 @@ class Whitelist(Object):
     classes = Object()
 
 
-def scan(mod) -> None:
+def scancls(mod) -> None:
     "scan module for classes."
     for key, clz in inspect.getmembers(mod, inspect.isclass):
         if key.startswith("cb"):
@@ -185,9 +185,9 @@ def __dir__():
         'find',
         'ident',
         'last'
-        'liststore',
+        'lsstore',
         'long',
-        'scan',
+        'scancls',
         'skel',
         'store',
         'strip',

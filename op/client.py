@@ -10,6 +10,7 @@ import inspect
 import threading
 
 
+from .disk    import scancls
 from .handler import Handler
 from .object  import Default, Object
 from .thread  import later
@@ -82,6 +83,9 @@ def add(func):
     setattr(Command.cmds, func.__name__, func)
 
 
+"utilities"
+
+
 def cmnd(txt, outer):
     "do a command using the provided output function."
     clt = Client()
@@ -105,6 +109,24 @@ def command(bot, evt):
             later(exc)
     bot.show(evt)
     evt.ready()
+
+
+def init(pkg, modstr, disable=""):
+    "start modules"
+    mds = []
+    for modname in spl(modstr):
+        if skip(modname, disable):
+            continue
+        mod = getattr(pkg, modname, None)
+        if not mod:
+            continue
+        if "init" in dir(mod):
+            try:
+                mod.init()
+                mds.append(mod)
+            except Exception as ex: # pylint: disable=W0718
+                later(ex)
+    return mds
 
 
 def laps(seconds, short=True):
@@ -145,6 +167,11 @@ def laps(seconds, short=True):
         txt += f"{sec}s"
     txt = txt.strip()
     return txt
+
+
+def lsmod(pth):
+    "return list of modules in a directory."
+    return ",".join(sorted([x[:-3] for x in os.listdir(pth) if not x.startswith("__")]))
 
 
 def parse_cmd(obj, txt=None):
@@ -201,13 +228,35 @@ def parse_cmd(obj, txt=None):
         obj.txt = obj.cmd or ""
 
 
-def scan(mod) -> None:
+def scancmd(mod) -> None:
     "scan module for commands."
     for key, cmd in inspect.getmembers(mod, inspect.isfunction):
         if key.startswith("cb"):
             continue
         if 'event' in cmd.__code__.co_varnames:
             add(cmd)
+
+
+def scan(pkg, modstr, disable=""):
+    "scan modules for commands and classes"
+    mds = []
+    for modname in spl(modstr):
+        if skip(modname, disable):
+            continue
+        module = getattr(pkg, modname, None)
+        if not module:
+            continue
+        scancmd(module)
+        scancls(module)
+    return mds
+
+
+def skip(name, skipp):
+    "check for skipping"
+    for skp in spl(skipp):
+        if skp in name:
+            return True
+    return False
 
 
 def spl(txt):
@@ -231,6 +280,7 @@ def __dir__():
         'cmnd',
         'command',
         'lapse',
+        'init',
         'parse_cmd',
         'scan',
         'spl'

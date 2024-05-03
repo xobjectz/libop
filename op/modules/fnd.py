@@ -4,7 +4,7 @@
 "locate"
 
 
-from ..disk import find, liststore, long, skel
+from ..disk   import find, lsstore, long, skel
 from ..object import fmt
 
 
@@ -12,14 +12,14 @@ def fnd(event):
     "locate objects."
     skel()
     if not event.rest:
-        res = sorted([x.split('.')[-1].lower() for x in liststore()])
+        res = sorted([x.split('.')[-1].lower() for x in lsstore()])
         if res:
             event.reply(",".join(res))
         return
     otype = event.args[0]
     clz = long(otype)
     if "." not in clz:
-        for fnm in liststore():
+        for fnm in lsstore():
             claz = fnm.split(".")[-1]
             if otype == claz.lower():
                 clz = fnm
