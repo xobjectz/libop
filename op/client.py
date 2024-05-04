@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=W0105
+# pylint: disable=R0903,W0105,W0718
 
 
 "client"
@@ -42,14 +42,14 @@ class Client(Handler):
             self.say(evt.channel, txt)
 
 
-class Command(Object): # pylint: disable=R0903
+class Command(Object):
 
     "Command"
 
     cmds = Object()
 
 
-class Event(Default): # pylint: disable=R0902
+class Event(Default):
 
     "Event"
 
@@ -125,7 +125,7 @@ def init(pkg, modstr, disable=""):
             try:
                 mod.init()
                 mds.append(mod)
-            except Exception as ex: # pylint: disable=W0718
+            except Exception as ex:
                 later(ex)
     return mds
 

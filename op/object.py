@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=W0105
+# pylint: disable=R0902,R0903,W0105
 
 
 "clean namespace"
@@ -15,7 +15,7 @@ import _thread
 lock = _thread.allocate_lock()
 
 
-class Object: # pylint: disable=R0902
+class Object:
 
     "Object"
 
@@ -32,7 +32,7 @@ class Object: # pylint: disable=R0902
         return str(self.__dict__)
 
 
-class Default(Object): # pylint: disable=R0902,R0903
+class Default(Object):
 
     "Default"
 
