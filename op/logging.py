@@ -22,25 +22,13 @@ def debug(txt):
     for skp in Logging.filter:
         if skp in txt:
             return
-    out(txt)
-
-
-def enablelog(func):
-    "set output function."
-    Logging.out = func
-
-
-def errors():
-    "show exceptions"
-    for exc in Errors.errors:
-        out(exc)
-
-
-def out(exc):
-    "check if output function is set."
-    txt = str(tostr(exc))
     if Logging.out:
         Logging.out(txt)
+
+
+def enable(func):
+    "set output function."
+    Logging.out = func
 
 
 "interface"
@@ -49,7 +37,5 @@ def out(exc):
 def __dir__():
     return (
         'debug',
-        'enable',
-        'errors',
-        'out'
+        'enable'
     )

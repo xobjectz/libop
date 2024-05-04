@@ -87,7 +87,7 @@ class Errors:
     out    = None
 
 
-def enable(func):
+def setout(func):
     Errors.out = func
 
 

@@ -22,10 +22,11 @@ sys.path.insert(0, os.getcwd())
 from op.message import Event
 from op.handler import Client, parse_cmd
 from op.storage import Workdir, skel
-from op.logging import debug
+from op.logging import debug, enable
 from op.objects import Default, cdir
 from op.runtime import broker, cmnd, dte, init, scan
-from op.threads import enable, errors
+from op.threads import errors, setout
+
 
 from op import modules
 
@@ -128,10 +129,11 @@ def main():
     skel()
     if "a" in Cfg.opts:
         Cfg.mod = ",".join(modules.__dir__())
+    setout(print)
     if "v" in Cfg.opts:
         enable(print)
         debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} started {dte}")
-        debug(f"scanned {Cfg.mod}")
+        debug(f"{Cfg.mod}")
     if "h" in Cfg.opts:
         print(__doc__)
     elif "d" in Cfg.opts:
