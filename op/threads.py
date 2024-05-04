@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=R0903,R0911,W0105,W0718
+# pylint: disable=R0903,R0911,W0105,W0622,W0718,E1102
 
 
 "threads with deferred exception handling"
@@ -88,6 +88,7 @@ class Errors:
 
 
 def setout(func):
+    "set output function."
     Errors.out = func
 
 
