@@ -9,7 +9,7 @@
 import unittest
 
 
-from op.object import Object
+from op.objects import Object
 
 
 class Mix:
