@@ -32,15 +32,6 @@ class Object:
         return str(self.__dict__)
 
 
-class Default(Object):
-
-    "Default"
-
-    def __getattr__(self, key):
-        return self.__dict__.get(key, "")
-
-
-
 def construct(obj, *args, **kwargs):
     "construct an object from provided arguments."
     if args:
@@ -165,6 +156,18 @@ def write(obj, pth):
         cdir(os.path.dirname(pth))
         with open(pth, 'w', encoding='utf-8') as ofile:
             dump(obj, ofile, indent=4)
+
+
+"default"
+
+
+class Default(Object):
+
+    "Default"
+
+    def __getattr__(self, key):
+        return self.__dict__.get(key, "")
+
 
 
 "decoder"

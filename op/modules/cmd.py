@@ -6,7 +6,10 @@
 "list of commands"
 
 
+
+from ..handler import Command
+
+
 def cmd(event):
     "list commands."
-    from op.handler import Command
     event.reply(",".join(sorted(list(Command.cmds))))

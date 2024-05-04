@@ -3,13 +3,13 @@
 # pylint: disable=R0903,W0105,E1102
 
 
-"utilities"
+"logging"
 
 
 from .thread import Errors, tostr
 
 
-class Debug:
+class Logging:
 
     "Debug"
 
@@ -19,15 +19,15 @@ class Debug:
 
 def debug(txt):
     "print to console."
-    for skp in Debug.filter:
+    for skp in Logging.filter:
         if skp in txt:
             return
-    Debug.out(txt)
+    out(txt)
 
 
-def enable(func):
+def enablelog(func):
     "set output function."
-    Debug.out = func
+    Logging.out = func
 
 
 def errors():
@@ -39,8 +39,8 @@ def errors():
 def out(exc):
     "check if output function is set."
     txt = str(tostr(exc))
-    if Debug.out:
-        Debug.out(txt)
+    if Logging.out:
+        Logging.out(txt)
 
 
 "interface"

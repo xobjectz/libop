@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=R0903,W0105,W0212
+# pylint: disable=R0903,W0105,W0212,W0718
 
 
 "handler"
@@ -14,13 +14,6 @@ import _thread
 
 from .object import Default, Object
 from .thread import later, launch
-
-
-class Command(Object):
-
-    "Command"
-
-    cmds = Object()
 
 
 class Handler:
@@ -96,6 +89,16 @@ class Client(Handler):
             self.say(evt.channel, txt)
 
 
+"command"
+
+
+class Command(Object):
+
+    "Command"
+
+    cmds = Object()
+
+
 def add(func):
     "add command."
     setattr(Command.cmds, func.__name__, func)
@@ -108,7 +111,7 @@ def command(bot, evt):
     if func:
         try:
             func(evt)
-        except Exception as exc: # pylint: disable=W0718
+        except Exception as exc:
             later(exc)
     bot.show(evt)
     evt.ready()
