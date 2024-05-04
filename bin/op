@@ -3,6 +3,7 @@
 #
 # pylint: disable=C0413
 
+
 "main"
 
 
@@ -34,7 +35,7 @@ Cfg.dis         = ""
 Cfg.mod         = "cmd,mod"
 Cfg.opts        = ""
 Cfg.name        = __file__.rsplit(os.sep, maxsplit=1)[-1]
-Cfg.version     = "31"
+Cfg.version     = "32"
 Cfg.wdr         = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile     = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
