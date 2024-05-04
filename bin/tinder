@@ -21,11 +21,11 @@ sys.path.insert(0, os.getcwd())
 from op.disk    import Workdir
 from op.event   import Event
 from op.handler import Client, Command, parse_cmd
-from op.logging import errors
+from op.log     import errors
 from op.object  import Default, Object, keys
-from op.runtime import dte, scan
+from op.run     import dte, scan
 from op.thread  import launch
-from op.utility import laps, lsmod
+from op.utils   import laps, lsmod
 
 
 from op import modules
