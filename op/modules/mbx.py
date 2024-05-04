@@ -11,9 +11,9 @@ import os
 import time
 
 
-from ..disk    import find, fntime, sync, whitelist
-from ..object  import Object, fmt, update
-from ..utility import laps
+from ..disk   import find, fntime, sync, whitelist
+from ..object import Object, fmt, update
+from ..utils  import laps
 
 
 MONTH = {

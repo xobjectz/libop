@@ -1,5 +1,6 @@
 # This file is placed in the Public Domain.
-
+#
+# pylint: disable=R0903
 
 "todo list"
 
@@ -7,17 +8,17 @@
 import time
 
 
-from ..disk    import fntime, find, sync
-from ..object  import Object
-from ..utility import laps
+from ..disk   import fntime, find, sync
+from ..object import Object
+from ..utils  import laps
 
 
-class NoDate(Exception): # pylint: disable=R0903
+class NoDate(Exception):
 
     "no matching date"
 
 
-class Todo(Object): # pylint: disable=R0903
+class Todo(Object):
 
     "Todo"
 

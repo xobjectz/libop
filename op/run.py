@@ -14,7 +14,7 @@ from .disk    import scancls
 from .event   import Event
 from .handler import Client, command, scancmd
 from .thread  import later
-from .utility import spl
+from .utils   import spl
 
 
 broker  = Broker()
