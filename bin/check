@@ -2,4 +2,4 @@ grep -R importlib op
 grep -R __import__ op
 grep -R "print(" op
 grep -R popen op
-#grep -R "import sys" op
+grep -R "import sys" op
