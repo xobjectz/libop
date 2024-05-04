@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=W0105
+# pylint: disable=W0105,W0718
 
 
 "runtime"
@@ -13,6 +13,7 @@ from .broker  import Broker
 from .disk    import scancls
 from .event   import Event
 from .handler import Client, command, scancmd
+from .thread  import later
 from .utility import spl
 
 
