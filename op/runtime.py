@@ -9,12 +9,12 @@
 import time
 
 
-from .broker  import Broker
-from .disk    import scancls
-from .event   import Event
+from .brokers import Broker
+from .storage import scancls
+from .message import Event
 from .handler import Client, command, scancmd
-from .thread  import later
-from .utils   import spl
+from .threads import later
+from .utility import spl
 
 
 broker  = Broker()

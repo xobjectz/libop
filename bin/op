@@ -19,13 +19,13 @@ import time
 sys.path.insert(0, os.getcwd())
 
 
-from op.event   import Event
+from op.message import Event
 from op.handler import Client, parse_cmd
-from op.disk    import Workdir, skel
-from op.log     import debug, enable, errors
-from op.object  import Default, cdir
-from op.run     import broker, cmnd, dte, init, scan
-
+from op.storage import Workdir, skel
+from op.logging import debug
+from op.objects import Default, cdir
+from op.runtime import broker, cmnd, dte, init, scan
+from op.threads import enable, errors
 
 from op import modules
 

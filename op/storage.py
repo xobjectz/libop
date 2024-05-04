@@ -12,7 +12,7 @@ import os
 import time
 
 
-from .object import Default, Object, cdir, fqn, read, search, write, update
+from .objects import Default, Object, cdir, fqn, read, search, write, update
 
 
 class Workdir(Object):

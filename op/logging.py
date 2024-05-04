@@ -6,7 +6,7 @@
 "logging"
 
 
-from .thread import Errors, tostr
+from .threads import Errors, format
 
 
 class Logging:

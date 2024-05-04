@@ -6,7 +6,7 @@
 "broker"
 
 
-from .object import Object, keys
+from .objects import Object, keys
 
 
 rpr = object.__repr__

@@ -8,9 +8,9 @@
 import time
 
 
-from ..disk   import fntime, find, sync
-from ..object import Object
-from ..utils  import laps
+from ..storage import fntime, find, sync
+from ..objects import Object
+from ..utility import laps
 
 
 class NoDate(Exception):

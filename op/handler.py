@@ -12,8 +12,8 @@ import threading
 import _thread
 
 
-from .object import Default, Object
-from .thread import later, launch
+from .objects import Default, Object
+from .threads import later, launch
 
 
 class Handler:

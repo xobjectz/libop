@@ -15,20 +15,20 @@ import time
 import _thread
 
 
-from op.disk    import last, sync, whitelist
-from op.event   import Event
+from op.storage import last, sync, whitelist
+from op.message import Event
 from op.handler import Client, command
-from op.log     import Debug, debug
-from op.object  import Default, Object, edit, fmt, keys, values
-from op.run     import broker
-from op.thread  import later, launch
+from op.logging import Logging, debug
+from op.objects import Default, Object, edit, fmt, keys, values
+from op.runtime import broker
+from op.threads import later, launch
 
 
 NAME    = __file__.split(os.sep)[-3]
 saylock = _thread.allocate_lock()
 
 
-Debug.filter = ["PING", "PONG", "PRIVMSG"]
+Logging.filter = ["PING", "PONG", "PRIVMSG"]
 
 
 def init():
