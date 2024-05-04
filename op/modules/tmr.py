@@ -9,11 +9,12 @@ import re
 import time as ttime
 
 
-from ..client  import Event, laps
 from ..disk    import find, sync
+from ..event   import Event
 from ..object  import update
 from ..runtime import broker
 from ..thread  import Timer, launch
+from ..utility import laps
 
 
 def init():

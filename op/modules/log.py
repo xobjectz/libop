@@ -7,9 +7,9 @@
 import time
 
 
-from ..client import laps
-from ..disk   import find, fntime, sync
-from ..object import Object
+from ..disk    import find, fntime, sync
+from ..object  import Object
+from ..utility import laps
 
 
 class Log(Object): # pylint: disable=R0903
