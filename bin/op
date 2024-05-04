@@ -132,8 +132,7 @@ def main():
     setout(print)
     if "v" in Cfg.opts:
         enable(print)
-        debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} started {dte}")
-        debug(f"{Cfg.mod}")
+        debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} {Cfg.mod.upper()} started {dte}")
     if "h" in Cfg.opts:
         print(__doc__)
     elif "d" in Cfg.opts:
