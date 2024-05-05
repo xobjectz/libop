@@ -27,7 +27,7 @@ Cfg             = Default()
 Cfg.dis         = ""
 Cfg.name        = __file__.rsplit(os.sep, maxsplit=1)[-1]
 Cfg.mod         = "cmd,mod"
-Cfg.version     = "32"
+Cfg.version     = "33"
 Cfg.opts        = ""
 Cfg.wdr         = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile     = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
