@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-# pylint: disable=R0903,W0105,W0212,W0718
+# pylint: disable=R0902,R0903,W0105,W0212,W0718
 
 
 "handler"
@@ -14,6 +14,64 @@ import _thread
 
 from .objects import Default, Object
 from .threads import later, launch
+
+
+rpr = object.__repr__
+
+
+class Broker:
+
+    "Broker"
+
+    def __init__(self):
+        self.objs = Object()
+
+    def add(self, obj):
+        "add an object to the broker."
+        setattr(self.objs, rpr(obj), obj)
+
+    def first(self):
+        "return first object."
+        for key in keys(self.objs):
+            return getattr(self.objs, key)
+
+    def get(self, orig):
+        "return object by origin (repr)"
+        return getattr(self.objs, orig, None)
+
+    def remove(self, obj):
+        "remove object from broker"
+        delattr(self.objs, rpr(obj))
+
+
+class Event(Default):
+
+    "Event"
+
+    def __init__(self):
+        Default.__init__(self)
+        self._thr    = None
+        self._ready  = threading.Event()
+        self.done    = False
+        self.orig    = None
+        self.result  = []
+        self.txt     = ""
+        self.type    = "event"
+
+    def ready(self):
+        "event is ready."
+        self._ready.set()
+
+    def reply(self, txt):
+        "add text to the result"
+        self.result.append(txt)
+
+    def wait(self):
+        "wait for event to be ready."
+        if self._thr:
+            self._thr.join()
+        self._ready.wait()
+        return self.result
 
 
 class Handler:
@@ -120,6 +178,18 @@ def command(bot, evt):
 "utilities"
 
 
+def cmnd(txt, outer):
+    "do a command using the provided output function."
+    clt = Client()
+    clt.raw = outer
+    evn = Event()
+    evn.orig = object.__repr__(clt)
+    evn.txt = txt
+    command(clt, evn)
+    evn.wait()
+    return evn
+
+
 def parse_cmd(obj, txt=None):
     "parse a string for a command."
     args = []
@@ -188,6 +258,7 @@ def scancmd(mod) -> None:
 
 def __dir__():
     return (
+        'Broker',
         'Client',
         'Commands',
         'Handler',

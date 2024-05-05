@@ -9,28 +9,14 @@
 import time
 
 
-from .brokers import Broker
+from .handler import Broker
 from .storage import scancls
-from .message import Event
-from .handler import Client, command, scancmd
-from .threads import later
+from .handler import scancmd
 from .utility import spl
 
 
 broker  = Broker()
 dte     = time.ctime(time.time()).replace("  ", " ")
-
-
-def cmnd(txt, outer):
-    "do a command using the provided output function."
-    clt = Client()
-    clt.raw = outer
-    evn = Event()
-    evn.orig = object.__repr__(clt)
-    evn.txt = txt
-    command(clt, evn)
-    evn.wait()
-    return evn
 
 
 def init(pkg, modstr, disable=""):

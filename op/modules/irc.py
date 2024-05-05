@@ -16,19 +16,17 @@ import _thread
 
 
 from op.storage import last, sync, whitelist
-from op.message import Event
-from op.handler import Client, command
-from op.logging import Logging, debug
+from op.handler import Client, Event, command
 from op.objects import Default, Object, edit, fmt, keys, values
 from op.runtime import broker
-from op.threads import later, launch
+from op.threads import Errors, debug, later, launch
 
 
 NAME    = __file__.split(os.sep)[-3]
 saylock = _thread.allocate_lock()
 
 
-Logging.filter = ["PING", "PONG", "PRIVMSG"]
+Errors.filter = ["PING", "PONG", "PRIVMSG"]
 
 
 def init():

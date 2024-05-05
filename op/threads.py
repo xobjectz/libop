@@ -84,18 +84,17 @@ class Errors:
     "Errors"
 
     errors = []
+    filter = []
     out    = None
 
 
-def setout(func):
-    "set output function."
-    Errors.out = func
-
-
-def later(exc):
-    "add an exception"
-    excp = exc.with_traceback(exc.__traceback__)
-    Errors.errors.append(excp)
+def debug(txt):
+    "print to console."
+    for skp in Errors.filter:
+        if skp in txt:
+            return
+    if Errors.out:
+        Errors.out(txt)
 
 
 def errors():
@@ -119,10 +118,21 @@ def format(exc):
     return res
 
 
+def later(exc):
+    "add an exception"
+    excp = exc.with_traceback(exc.__traceback__)
+    Errors.errors.append(excp)
+
+
 def out(exc):
     "check if output function is set."
     if Errors.out:
         Errors.out(format(exc))
+
+
+def setout(func):
+    "set output function."
+    Errors.out = func
 
 
 "timers"

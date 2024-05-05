@@ -17,13 +17,11 @@ import time
 sys.path.insert(0, os.getcwd())
 
 
-from op.message import Event
-from op.handler import Client, parse_cmd
-from op.storage import Workdir, skel
-from op.logging import debug, enable
+from op.handler import Client, Event, cmnd, parse_cmd
 from op.objects import Default
-from op.runtime import broker, cmnd, dte, init, scan
-from op.threads import errors, setout
+from op.runtime import broker, dte, init, scan
+from op.storage import Workdir, skel
+from op.threads import debug, errors, setout
 
 
 from op import modules
@@ -96,7 +94,6 @@ def main():
     if "a" in Cfg.opts:
         Cfg.mod = ",".join(modules.__dir__())
     if "v" in Cfg.opts:
-        enable(print)
         debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} {Cfg.mod.upper()} started {dte}")
     if "h" in Cfg.opts:
         print(__doc__)
