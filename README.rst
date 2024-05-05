@@ -155,7 +155,7 @@ SYSTEMD
     User=<user>
     Group=<user>
     WorkingDirectory=/home/<user>/.op
-    ExecStart=/home/<user>/.local/pipx/venvs/op/bin/op -d
+    ExecStart=/home/<user>/.local/pipx/venvs/op/bin/opd
     RemainAfterExit=yes
 
     [Install]
