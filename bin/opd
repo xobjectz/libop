@@ -14,9 +14,9 @@ import sys
 import time
 
 
-from op.storage import Workdir, skel
 from op.objects import Default, cdir
 from op.runtime import init, scan
+from op.storage import Workdir, skel
 from op.threads import errors
 
 
@@ -25,7 +25,7 @@ from op import modules
 
 Cfg             = Default()
 Cfg.dis         = ""
-Cfg.name        = __file__.rsplit(os.sep, maxsplit=1)[-1]
+Cfg.name        = "op"
 Cfg.mod         = "cmd,mod"
 Cfg.version     = "33"
 Cfg.opts        = ""
@@ -71,9 +71,9 @@ def privileges(username):
 def main():
     "main"
     skel()
-    Cfg.mod = ",".join(modules.__dir__())
+    Cfg.mod = ",".join(dir(modules))
     Cfg.user = getpass.getuser()
-    daemon(Cfg.pidfile, "v" in Cfg.opts)
+    daemon(Cfg.pidfile, "-v" in sys.argv)
     privileges(Cfg.user)
     scan(modules, Cfg.mod)
     init(modules, Cfg.mod)
