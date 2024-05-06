@@ -14,6 +14,52 @@ import traceback
 import types
 
 
+class Errors:
+
+    "Errors"
+
+    errors = []
+    out    = None
+
+
+def errors():
+    "show exceptions"
+    for exc in Errors.errors:
+        out(exc)
+
+
+def format(exc):
+    "format an exception"
+    res = ""
+    stream = io.StringIO(
+                         traceback.print_exception(
+                                                   type(exc),
+                                                   exc,
+                                                   exc.__traceback__
+                                                  )
+                        )
+    for line in stream.readlines():
+        res += line + "\n"
+    return res
+
+
+def later(exc):
+    "add an exception"
+    excp = exc.with_traceback(exc.__traceback__)
+    Errors.errors.append(excp)
+
+
+def out(exc):
+    "check if output function is set."
+    if Errors.out:
+        Errors.out(format(exc))
+
+
+def setout(func):
+    "set output function."
+    Errors.out = func
+
+
 class Thread(threading.Thread):
 
     "Thread"
@@ -76,65 +122,6 @@ def name(obj):
     return None
 
 
-"errors"
-
-
-class Errors:
-
-    "Errors"
-
-    errors = []
-    filter = []
-    out    = None
-
-
-def debug(txt):
-    "print to console."
-    for skp in Errors.filter:
-        if skp in txt:
-            return
-    if Errors.out:
-        Errors.out(txt)
-
-
-def errors():
-    "show exceptions"
-    for exc in Errors.errors:
-        out(exc)
-
-
-def format(exc):
-    "format an exception"
-    res = ""
-    stream = io.StringIO(
-                         traceback.print_exception(
-                                                   type(exc),
-                                                   exc,
-                                                   exc.__traceback__
-                                                  )
-                        )
-    for line in stream.readlines():
-        res += line + "\n"
-    return res
-
-
-def later(exc):
-    "add an exception"
-    excp = exc.with_traceback(exc.__traceback__)
-    Errors.errors.append(excp)
-
-
-def out(exc):
-    "check if output function is set."
-    if Errors.out:
-        Errors.out(format(exc))
-
-
-def setout(func):
-    "set output function."
-    Errors.out = func
-
-
 "timers"
 
 
@@ -192,6 +179,7 @@ def __dir__():
         'Repeater',
         'Thread',
         'Timer',
+        'errors',
         'later',
         'launch',
         'name',

@@ -21,6 +21,7 @@ sys.path.insert(0, os.getcwd())
 from op.client  import Client, Command, parse_cmd
 from op.disk    import Workdir
 from op.handler import Event
+from op.log     import debug, enable
 from op.object  import Default, Object, keys
 from op.run     import dte, scan
 from op.thread  import errors, launch
@@ -165,7 +166,8 @@ def main():
 
 if __name__ == "__main__":
     parse_cmd(Cfg, " ".join(sys.argv[1:]))
-    cprint(f"{Cfg.name.upper()} {Cfg.opts.upper()} started {dte}")
+    enable(print)
+    debug(f'{" ".join(dte.split()[1:])} {Cfg.name.upper()} {Cfg.opts.upper()} {Cfg.mod.upper()}')
     if "p" in Cfg.opts:
         profile.runctx(main.__code__, globals(), locals())
     else:

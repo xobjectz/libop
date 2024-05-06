@@ -21,9 +21,10 @@ sys.path.insert(0, os.getcwd())
 from op.client  import Client, cmnd, parse_cmd
 from op.disk    import Workdir, skel
 from op.handler import Event
+from op.log     import debug, enable
 from op.object  import Default
 from op.run     import broker, dte, init, scan
-from op.thread  import debug, errors, setout
+from op.thread  import errors, setout
 
 
 from op import modules
@@ -92,7 +93,7 @@ def main():
     "main"
     parse_cmd(Cfg, " ".join(sys.argv[1:]))
     skel()
-    setout(print)
+    enable(print)
     if "a" in Cfg.opts:
         Cfg.mod = ",".join(modules.__dir__())
     if "v" in Cfg.opts:

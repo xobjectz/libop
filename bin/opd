@@ -14,10 +14,10 @@ import sys
 import time
 
 
-from op.objects import Default, cdir
-from op.runtime import init, scan
-from op.storage import Workdir, skel
-from op.threads import errors
+from op.disk   import Workdir, skel
+from op.object import Default, cdir
+from op.run    import init, scan
+from op.thread import errors
 
 
 from op import modules
