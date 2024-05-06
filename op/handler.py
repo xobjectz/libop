@@ -12,8 +12,8 @@ import threading
 import _thread
 
 
-from .objects import Default, Object
-from .threads import later, launch
+from .object import Default, Object
+from .thread import later, launch
 
 
 rpr = object.__repr__
@@ -259,7 +259,6 @@ def scancmd(mod) -> None:
 def __dir__():
     return (
         'Broker',
-        'Client',
         'Commands',
         'Handler',
         'add',

@@ -9,10 +9,10 @@
 import time
 
 
-from .handler import Broker
-from .storage import scancls
+from .broker  import Broker
+from .disk    import scancls
 from .handler import scancmd
-from .utility import spl
+from .utils   import spl
 
 
 broker  = Broker()

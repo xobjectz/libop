@@ -6,7 +6,7 @@
 "deferred exception handling"
 
 
-from ..threads import Errors, format
+from ..thread import Errors, format
 
 
 def err(event):
