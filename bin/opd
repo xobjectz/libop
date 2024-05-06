@@ -27,7 +27,7 @@ Cfg             = Default()
 Cfg.dis         = ""
 Cfg.name        = "op"
 Cfg.mod         = "cmd,mod"
-Cfg.version     = "33"
+Cfg.version     = "34"
 Cfg.opts        = ""
 Cfg.wdr         = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile     = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
@@ -71,7 +71,7 @@ def privileges(username):
 def main():
     "main"
     skel()
-    Cfg.mod = ",".join(dir(modules))
+    Cfg.mod  = ",".join(dir(modules))
     Cfg.user = getpass.getuser()
     daemon(Cfg.pidfile, "-v" in sys.argv)
     privileges(Cfg.user)

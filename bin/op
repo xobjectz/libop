@@ -32,7 +32,7 @@ Cfg.dis         = ""
 Cfg.mod         = "cmd,mod"
 Cfg.opts        = ""
 Cfg.name        = __file__.rsplit(os.sep, maxsplit=1)[-1]
-Cfg.version     = "33"
+Cfg.version     = "34"
 Cfg.wdr         = os.path.expanduser(f"~/.{Cfg.name}")
 Cfg.pidfile     = os.path.join(Cfg.wdr, f"{Cfg.name}.pid")
 
@@ -94,7 +94,7 @@ def main():
     if "a" in Cfg.opts:
         Cfg.mod = ",".join(modules.__dir__())
     if "v" in Cfg.opts:
-        debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} {Cfg.mod.upper()} started {dte}")
+        debug(f"{Cfg.name.upper()} {Cfg.opts.upper()} {Cfg.mod.upper()} @{dte}")
     if "h" in Cfg.opts:
         print(__doc__)
     scan(modules, Cfg.mod, Cfg.sets.dis)
