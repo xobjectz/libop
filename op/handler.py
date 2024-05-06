@@ -6,14 +6,13 @@
 "handler"
 
 
-import inspect
 import queue
 import threading
 import _thread
 
 
 from .object import Default, Object
-from .thread import later, launch
+from .thread import launch
 
 
 rpr = object.__repr__
