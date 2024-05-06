@@ -18,8 +18,9 @@ import _thread
 sys.path.insert(0, os.getcwd())
 
 
+from op.client  import Client, Command, parse_cmd
 from op.disk    import Workdir
-from op.handler import Client, Command, Event, parse_cmd
+from op.handler import Event
 from op.object  import Default, Object, keys
 from op.run     import dte, scan
 from op.thread  import errors, launch

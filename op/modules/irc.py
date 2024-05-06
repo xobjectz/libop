@@ -15,8 +15,9 @@ import time
 import _thread
 
 
+from op.client  import Client, command
 from op.disk    import last, sync, whitelist
-from op.handler import Client, Event, command
+from op.handler import Event
 from op.object  import Default, Object, edit, fmt, keys, values
 from op.run     import broker
 from op.thread  import Errors, debug, later, launch

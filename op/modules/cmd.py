@@ -7,7 +7,7 @@
 
 
 
-from ..handler import Command
+from ..client import Command
 
 
 def cmd(event):

@@ -17,8 +17,10 @@ import time
 sys.path.insert(0, os.getcwd())
 
 
+
+from op.client  import Client, cmnd, parse_cmd
 from op.disk    import Workdir, skel
-from op.handler import Client, Event, cmnd, parse_cmd
+from op.handler import Event
 from op.object  import Default
 from op.run     import broker, dte, init, scan
 from op.thread  import debug, errors, setout

@@ -10,8 +10,8 @@ import time
 
 
 from .broker  import Broker
+from .client  import scancmd
 from .disk    import scancls
-from .handler import scancmd
 from .utils   import spl
 
 
