@@ -1,6 +1,4 @@
 # This file is placed in the Public Domain.
-#
-# pylint: disable=W0105,W0718
 
 
 "runtime"
@@ -28,7 +26,7 @@ def init(pkg, modstr, disable=""):
             try:
                 mod.init()
                 mds.append(mod)
-            except Exception as ex:
+            except Exception as ex: # pylint: disable=W0718
                 later(ex)
     return mds
 
@@ -62,9 +60,6 @@ def spl(txt):
     except (TypeError, ValueError):
         res = txt
     return [x for x in res if x]
-
-
-"interface"
 
 
 def __dir__():

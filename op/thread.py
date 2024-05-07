@@ -1,6 +1,4 @@
 # This file is placed in the Public Domain.
-#
-# pylint: disable=R0903,R0911,W0105,W0622,W0718,E1102
 
 
 "threads with deferred exception handling"
@@ -14,7 +12,7 @@ import traceback
 import types
 
 
-class Errors:
+class Errors: # pylint: disable=R0903
 
     "Errors"
 
@@ -28,7 +26,7 @@ def errors():
         out(exc)
 
 
-def format(exc):
+def formatexc(exc):
     "format an exception"
     res = ""
     stream = io.StringIO(
@@ -52,7 +50,7 @@ def later(exc):
 def out(exc):
     "check if output function is set."
     if Errors.out:
-        Errors.out(format(exc))
+        Errors.out(formatexc(exc)) # pylint: disable=E1102
 
 
 def setout(func):
@@ -90,7 +88,7 @@ class Thread(threading.Thread):
         func, args = self.queue.get()
         try:
             self._result = func(*args)
-        except Exception as ex:
+        except Exception as ex: # pylint: disable=W0718
             later(ex)
             if args and "Event" in str(type(args[0])):
                 args[0].ready()
@@ -106,6 +104,7 @@ def launch(func, *args, **kwargs):
 
 def name(obj):
     "return a full qualified name of an object/function/module."
+    # pylint: disable=R0911
     typ = type(obj)
     if isinstance(typ, types.ModuleType):
         return obj.__name__
@@ -120,9 +119,6 @@ def name(obj):
     if '__name__' in dir(obj):
         return f'{obj.__class__.__name__}.{obj.__name__}'
     return None
-
-
-"timers"
 
 
 class Timer:
@@ -168,9 +164,6 @@ class Repeater(Timer):
     def run(self):
         launch(self.start)
         super().run()
-
-
-"interface"
 
 
 def __dir__():

@@ -19,7 +19,7 @@ from op.client  import Client, command
 from op.disk    import sync, whitelist
 from op.find    import last
 from op.handler import Event
-from op.log     import debug
+from op.log     import Logging, debug
 from op.object  import Default, Object, edit, fmt, keys, values
 from op.run     import broker
 from op.thread  import Errors, later, launch
@@ -29,7 +29,7 @@ NAME    = __file__.split(os.sep)[-3]
 saylock = _thread.allocate_lock()
 
 
-Errors.filter = ["PING", "PONG", "PRIVMSG"]
+Logging.filter = ["PING", "PONG", "PRIVMSG"]
 
 
 def init():
