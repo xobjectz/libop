@@ -12,31 +12,6 @@ from .object  import Default, Object
 from .thread  import later
 
 
-class Command(Object): # pylint: disable=R0903
-
-    "Command"
-
-    cmds = Object()
-
-
-def add(func):
-    "add command."
-    setattr(Command.cmds, func.__name__, func)
-
-
-def command(bot, evt):
-    "check for and run a command."
-    parse(evt)
-    func = getattr(Command.cmds, evt.cmd, None)
-    if func:
-        try:
-            func(evt)
-        except Exception as exc: # pylint: disable=W0718
-            later(exc)
-    bot.show(evt)
-    evt.ready()
-
-
 class Client(Handler):
 
     "Client"
@@ -60,6 +35,31 @@ class Client(Handler):
         "show results into a channel."
         for txt in evt.result:
             self.say(evt.channel, txt)
+
+
+class Command(Object): # pylint: disable=R0903
+
+    "Command"
+
+    cmds = Object()
+
+
+def add(func):
+    "add command."
+    setattr(Command.cmds, func.__name__, func)
+
+
+def command(bot, evt):
+    "check for and run a command."
+    parse(evt)
+    func = getattr(Command.cmds, evt.cmd, None)
+    if func:
+        try:
+            func(evt)
+        except Exception as exc: # pylint: disable=W0718
+            later(exc)
+    bot.show(evt)
+    evt.ready()
 
 
 def cmnd(txt, outer):

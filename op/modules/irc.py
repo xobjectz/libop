@@ -22,7 +22,7 @@ from op.handler import Event
 from op.log     import Logging, debug
 from op.object  import Default, Object, edit, fmt, keys, values
 from op.run     import broker
-from op.thread  import Errors, later, launch
+from op.thread  import later, launch
 
 
 NAME    = __file__.split(os.sep)[-3]

@@ -12,7 +12,7 @@ import _thread
 lock = _thread.allocate_lock()
 
 
-class Object:
+class Object: # pylint: disable=R0902
 
     "Object"
 
@@ -29,7 +29,7 @@ class Object:
         return str(self.__dict__)
 
 
-class Default(Object): # pylint: disable=R0903
+class Default(Object): # pylint: disable=R0902,R0903
 
     "Default"
 

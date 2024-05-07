@@ -10,7 +10,7 @@ from .disk    import scancls
 from .thread  import later
 
 
-broker  = Broker()
+broker = Broker()
 
 
 def init(pkg, modstr, disable=""):
