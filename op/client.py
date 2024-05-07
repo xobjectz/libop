@@ -1,9 +1,7 @@
 # This file is placed in the Public Domain.
-#
-# pylint: disable=R0902,R0903,W0105,W0212,W0718
 
 
-"clientele"
+"client"
 
 
 import inspect
@@ -11,6 +9,32 @@ import inspect
 
 from .handler import Event, Handler
 from .object  import Default, Object
+from .thread  import later
+
+
+class Command(Object): # pylint: disable=R0903
+
+    "Command"
+
+    cmds = Object()
+
+
+def add(func):
+    "add command."
+    setattr(Command.cmds, func.__name__, func)
+
+
+def command(bot, evt):
+    "check for and run a command."
+    parse(evt)
+    func = getattr(Command.cmds, evt.cmd, None)
+    if func:
+        try:
+            func(evt)
+        except Exception as exc: # pylint: disable=W0718
+            later(exc)
+    bot.show(evt)
+    evt.ready()
 
 
 class Client(Handler):
@@ -38,37 +62,6 @@ class Client(Handler):
             self.say(evt.channel, txt)
 
 
-"command"
-
-
-class Command(Object):
-
-    "Command"
-
-    cmds = Object()
-
-
-def add(func):
-    "add command."
-    setattr(Command.cmds, func.__name__, func)
-
-
-def command(bot, evt):
-    "check for and run a command."
-    parse_cmd(evt)
-    func = getattr(Command.cmds, evt.cmd, None)
-    if func:
-        try:
-            func(evt)
-        except Exception as exc:
-            later(exc)
-    bot.show(evt)
-    evt.ready()
-
-
-"utilities"
-
-
 def cmnd(txt, outer):
     "do a command using the provided output function."
     clt = Client()
@@ -81,7 +74,47 @@ def cmnd(txt, outer):
     return evn
 
 
-def parse_cmd(obj, txt=None):
+def laps(seconds, short=True):
+    "show elapsed time."
+    txt = ""
+    nsec = float(seconds)
+    if nsec < 1:
+        return f"{nsec:.2f}s"
+    yea = 365*24*60*60
+    week = 7*24*60*60
+    nday = 24*60*60
+    hour = 60*60
+    minute = 60
+    yeas = int(nsec/yea)
+    nsec -= yeas*yea
+    weeks = int(nsec/week)
+    nsec -= weeks*week
+    nrdays = int(nsec/nday)
+    nsec -= nrdays*nday
+    hours = int(nsec/hour)
+    nsec -= hours*hour
+    minutes = int(nsec/minute)
+    nsec -= int(minute*minutes)
+    sec = int(nsec)
+    if yeas:
+        txt += f"{yeas}y"
+    if weeks:
+        nrdays += weeks * 7
+    if nrdays:
+        txt += f"{nrdays}d"
+    if short and txt:
+        return txt.strip()
+    if hours:
+        txt += f"{hours}h"
+    if minutes:
+        txt += f"{minutes}m"
+    if sec:
+        txt += f"{sec}s"
+    txt = txt.strip()
+    return txt
+
+
+def parse(obj, txt=None):
     "parse a string for a command."
     args = []
     obj.args    = obj.args or []
@@ -144,14 +177,13 @@ def scancmd(mod) -> None:
             add(cmd)
 
 
-"interface"
-
-
 def __dir__():
     return (
         'Client',
         'Commands',
         'add',
         'command',
-        'parse_cmd',
+        'laps',
+        'parse',
+        'scancmd'
     )

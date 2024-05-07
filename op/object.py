@@ -7,7 +7,6 @@
 
 
 import json
-import os
 import pathlib
 import _thread
 
@@ -153,7 +152,8 @@ def values(obj):
 def write(obj, pth):
     "write an object to disk."
     with lock:
-        cdir(os.path.dirname(pth))
+        path = pathlib.Path(pth)
+        path.parent.mkdir(parents=True, exist_ok=True)
         with open(pth, 'w', encoding='utf-8') as ofile:
             dump(obj, ofile, indent=4)
 
@@ -260,14 +260,6 @@ def dumps(*args, **kw):
     "dump object to string."
     kw["cls"] = ObjectEncoder
     return json.dumps(*args, **kw)
-
-
-def cdir(pth):
-    "create directory."
-    if os.path.exists(pth):
-        return
-    pth = pathlib.Path(pth)
-    os.makedirs(pth, exist_ok=True)
 
 
 "interface"

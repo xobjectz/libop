@@ -6,17 +6,13 @@
 "runtime"
 
 
-import time
-
-
 from .broker  import Broker
 from .client  import scancmd
 from .disk    import scancls
-from .utils   import spl
+from .thread  import later
 
 
 broker  = Broker()
-dte     = time.ctime(time.time()).replace("  ", " ")
 
 
 def init(pkg, modstr, disable=""):
@@ -59,12 +55,23 @@ def skip(name, skipp):
     return False
 
 
+def spl(txt):
+    "split comma separated string into a list."
+    try:
+        res = txt.split(',')
+    except (TypeError, ValueError):
+        res = txt
+    return [x for x in res if x]
+
+
 "interface"
 
 
 def __dir__():
     return (
         'broker',
-        'cmnd',
-        'dte'
+        'init',
+        'scan',
+        'skip',
+        'spl'
     )

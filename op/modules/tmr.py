@@ -9,12 +9,13 @@ import re
 import time as ttime
 
 
-from ..disk    import find, sync
+from ..client  import laps
+from ..disk    import sync
+from ..find    import find
 from ..object  import update
 from ..handler import Event
 from ..run     import broker
 from ..thread  import Timer, launch
-from ..utils   import laps
 
 
 def init():
