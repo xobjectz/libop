@@ -1,6 +1,4 @@
 # This file is placed in the Public Domain.
-#
-# pylint: disable=C,R,W0105
 
 
 "no tests"
@@ -14,7 +12,10 @@ from op.modules.rss import Parser
 
 class TestAtom(unittest.TestCase):
 
+    "test atom feed."
+
     def test_github(self):
+        "use github feed to test atom."
         res = Parser.parse(TXT, "entry", "title,author,link")
         self.assertEqual(len(res), 20)
 

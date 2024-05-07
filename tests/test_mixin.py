@@ -1,6 +1,4 @@
 # This file is placed in the Public Domain.
-#
-# pylint: disable=C,R,W0105
 
 
 "mixin"
@@ -12,16 +10,22 @@ import unittest
 from op.object import Object
 
 
-class Mix:
+class Mix: # pylint: disable=R0903
+    "class to mixin."
+
     a = "b"
 
 
-class Mixin(Mix, Object):
-    pass
+class Mixin(Mix, Object): # pylint: disable=R0903
+
+    "mixin class"
 
 
 class TestMixin(unittest.TestCase):
 
+    "test mixin classes."
+
     def test_mixin(self):
-        m = Mixin()
-        self.assertTrue(type(m) == Mixin)
+        "mixin test."
+        mix = Mixin()
+        self.assertTrue(isinstance(mix, Mixin))

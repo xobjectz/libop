@@ -9,8 +9,9 @@
 import unittest
 
 
-
 class TestNone(unittest.TestCase):
+
+    "nothing"
 
     def test_nope(self):
         self.assertTrue(True)

@@ -14,10 +14,12 @@ from op.modules.rss import Parser
 
 class TestOPML(unittest.TestCase):
 
+    "test opml."
+
     def test_opml(self):
+        "test opml parser."
         p = Parser()
         res = p.parse(TXT, "outline", "title,type,text,xmlUrl")
-        print(res)
         self.assertTrue(len(res) == 4)
 
 

@@ -14,6 +14,8 @@ from op.modules.rss import Parser
 
 class TestParse(unittest.TestCase):
 
+    "test rss feed."
+
     def test_hnrss(self):
         res = Parser.parse(TXT)
         self.assertEqual(len(res), 20)
